@@ -1,0 +1,25 @@
+<% @instagram.each do |s| %>
+  <b>Attribution: </b> <%= s["attribution"].to_s %><br/>
+  <b>Tags: </b> <%= s["tags"].to_s %><br/>
+  <b>Location: </b> <%= s["location"].to_s %><br/>
+  <b>Comments: </b> <%= s["comments"]["count"].to_s %><br/>
+  ---><br/>
+    <b>Comments Data: </b>
+      <% s["comments"]["data"].each do |d| %>
+        <%= d.to_s %><br/>
+      <% end %><br/>
+  <b>Filter: </b> <%= s["filter"].to_s %><br/>
+  <b>created_time: </b> <%= s["created_time"].to_s %><br/>
+  <b>link: </b> <%= s["link"].to_s %><br/>
+  <b>likes: </b> <%= s["likes"]["count"].to_s %><br/>
+    --->
+      <% s["likes"]["data"].each do |d| %>
+        <b>Who like: </b> <%= d["username"] %> - <%= image_tag(d["profile_picture"]) %><br/>
+      <% end %>
+  <br/>
+  <b>Imagem:</b><br/>
+  <%= image_tag(s["images"]["thumbnail"]["url"].to_s) %>
+  <%= image_tag(s["images"]["standard_resolution"]["url"].to_s) %>
+  <br/>
+  <b>Text:</b> <%= s["caption"].to_s %>
+<% end %>
